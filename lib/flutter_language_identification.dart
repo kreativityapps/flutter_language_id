@@ -10,9 +10,9 @@ class FlutterLanguageIdentification {
   static const MethodChannel _channel =
       const MethodChannel('flutter_language_identification');
 
-  ErrorHandler errorHandler;
-  VoidCallback successHandler;
-  VoidCallback failedHandler;
+  ErrorHandler? errorHandler;
+  VoidCallback? successHandler;
+  VoidCallback? failedHandler;
 
   FlutterLanguageIdentification() {
     _channel.setMethodCallHandler(platformCallHandler);
@@ -43,27 +43,27 @@ class FlutterLanguageIdentification {
     switch (call.method) {
       case "identifyPossibleLanguages.onSuccess":
         if (successHandler != null) {
-          successHandler(call.arguments);
+          successHandler!(call.arguments);
         }
         break;
       case "identifyPossibleLanguages.onError":
         if (errorHandler != null) {
-          errorHandler(call.arguments);
+          errorHandler!(call.arguments);
         }
         break;
       case "identifyLanguage.onSuccess":
         if (successHandler != null) {
-          successHandler(call.arguments);
+          successHandler!(call.arguments);
         }
         break;
       case "identifyLanguage.onError":
         if (errorHandler != null) {
-          errorHandler(call.arguments);
+          errorHandler!(call.arguments);
         }
         break;
       case "identifyLanguage.onFailed":
         if (failedHandler != null) {
-          failedHandler(call.arguments);
+          failedHandler!(call.arguments);
         }
         break;
       default:
